@@ -28,3 +28,8 @@ jobs:
       run: |
         # Revisa errores de sintaxis y estilo
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+    - name: Run Tests with Pytest
+      run: |
+        export DATABASE_URL="sqlite:///./test.db" # Usar DB temporal para tests
+        pytest
