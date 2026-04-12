@@ -1,6 +1,20 @@
+# --- Core Framework ---
 fastapi==0.111.0
-uvicorn==0.30.1
-sqlmodel
-psycopg2-binary
-pytest
-httpx
+uvicorn[standard]==0.30.1
+
+# --- Database & ORM ---
+sqlmodel==0.0.19
+psycopg2-binary==2.9.9
+# Driver asíncrono opcional pero recomendado para PostgreSQL
+asyncpg==0.29.0
+
+# --- Environment & Security ---
+python-dotenv==1.0.1
+# Necesario para el manejo de formularios (evita el warning de multipart)
+python-multipart==0.0.9
+
+# --- Testing & Quality (Dev dependencies) ---
+pytest==8.2.2
+httpx==0.27.0
+# Para medir qué tanto código cubren tus tests
+pytest-cov==5.0.0
