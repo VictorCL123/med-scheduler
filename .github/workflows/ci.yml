@@ -30,6 +30,6 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
 
     - name: Run Tests with Pytest
+      working-directory: ./backend  # Nos movemos a la carpeta donde está el pyproject.toml
       run: |
-        export DATABASE_URL="sqlite:///./test.db" # Usar DB temporal para tests
         pytest
