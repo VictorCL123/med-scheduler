@@ -31,5 +31,7 @@ jobs:
 
     - name: Run Tests with Pytest
       working-directory: ./backend  # Nos movemos a la carpeta donde está el pyproject.toml
+      env:
+        SUPABASE_URL: sqlite:///./test.db
       run: |
         pytest
