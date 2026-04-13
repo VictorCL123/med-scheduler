@@ -34,5 +34,5 @@ jobs:
       env:
         SUPABASE_URL: sqlite:///./test.db
       run: |
-        python -m app.seed
+        python -m seed
         pytest
