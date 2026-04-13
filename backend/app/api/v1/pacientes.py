@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 from app.db.database import get_session
@@ -15,6 +17,11 @@ def registrar_paciente(datos: PacienteCreate, session: Session = Depends(get_ses
         raise HTTPException(
             status_code=500, detail="El rol 'Paciente' no existe en los catálogos."
         )
+    # Validate and transform date
+    if datos.fecha_nacimiento:
+        datos.fecha_nacimiento = datetime.strptime(
+            datos.fecha_nacimiento, "%Y-%m-%d"
+        ).date()
 
     # Crear el nuevo Usuario con rol de Paciente
     nuevo_paciente = User(
