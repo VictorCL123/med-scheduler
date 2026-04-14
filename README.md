@@ -32,6 +32,7 @@ El proyecto está estructurado para facilitar el mantenimiento y las pruebas aut
 
 ---
 ## 📂 Estructura del Proyecto
+```text
 ├── backend/              # FastAPI + SQLModel + PostgreSQL
 │   ├── app/              # Lógica central (CRUD, Routers, Core)
 │   ├── main.py           # Punto de entrada y Middleware CORS
@@ -42,6 +43,7 @@ El proyecto está estructurado para facilitar el mantenimiento y las pruebas aut
 │   ├── src/pages/        # Vistas principales de la aplicación
 │   └── tailwind.config.js # Personalización del sistema de diseño
 └── .github/workflows/    # Pipelines de CI/CD (Linter & Build)
+```
 ---
 
 ## 🚦 Instalación y Configuración
