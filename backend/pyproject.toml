@@ -1,0 +1,5 @@
+[tool.pytest.ini_options]
+# Le dice a pytest que la raíz para buscar módulos es la carpeta actual
+pythonpath = ["."]
+# Define dónde están los tests para que no pierda tiempo buscando en otras carpetas
+testpaths = ["tests"]

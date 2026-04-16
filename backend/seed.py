@@ -1,8 +1,11 @@
-from sqlmodel import Session, select
+from sqlmodel import SQLModel, Session, select
 from app.db.database import engine
 from app.models.models import Rol, Especialidad, TipoDisponibilidad
 
+
 def seed_data():
+    SQLModel.metadata.create_all(engine)
+
     with Session(engine) as session:
         # 1. Llenar Roles
         roles_nombres = ["Paciente", "Doctor", "Recepcionista"]
@@ -23,13 +26,16 @@ def seed_data():
         # 3. Llenar Tipos de Disponibilidad
         tipos_disp = ["Semanal", "Quincenal", "Mensual", "Bloqueado"]
         for nombre in tipos_disp:
-            statement = select(TipoDisponibilidad).where(TipoDisponibilidad.disponibilidad == nombre)
+            statement = select(TipoDisponibilidad).where(
+                TipoDisponibilidad.disponibilidad == nombre
+            )
             if not session.exec(statement).first():
                 session.add(TipoDisponibilidad(disponibilidad=nombre))
                 print(f"Tipo de disponibilidad '{nombre}' creado.")
 
         session.commit()
         print("--- Proceso de seeding completado con éxito ---")
+
 
 if __name__ == "__main__":
     seed_data()

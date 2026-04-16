@@ -4,6 +4,9 @@
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![SQLModel](https://img.shields.io/badge/SQLModel-SQLAlchemy-red?style=for-the-badge)](https://sqlmodel.tiangolo.com/)
 [![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
 **Med-Scheduler** es una solución de backend de alto rendimiento para la gestión de citas médicas. Diseñada bajo principios de **Clean Architecture**, esta API resuelve el desafío de la disponibilidad dinámica y la gestión de catálogos especializados para el sector salud.
 
@@ -16,6 +19,7 @@ El proyecto está estructurado para facilitar el mantenimiento y las pruebas aut
 * **Modularidad:** Separación estricta entre modelos de persistencia (`models/`) y esquemas de validación de datos (`schemas/`).
 * **Gestión de Catálogos:** Implementación de sistemas de seeding para roles, especialidades y tipos de jornada.
 * **Motor de Disponibilidad:** Lógica avanzada que calcula slots de tiempo libres mediante la intersección de horarios laborales y citas agendadas.
+* **Frontend:** Arquitectura basada en Hooks personalizados para el manejo de estado asíncrono y componentes reutilizables con Tailwind CSS.
 
 ---
 
@@ -26,6 +30,20 @@ El proyecto está estructurado para facilitar el mantenimiento y las pruebas aut
 * **Database:** PostgreSQL (vía Supabase) con soporte para integridad referencial compleja.
 * **Configuración:** Pydantic-Settings para la gestión segura de variables de entorno.
 
+---
+## 📂 Estructura del Proyecto
+```text
+├── backend/              # FastAPI + SQLModel + PostgreSQL
+│   ├── app/              # Lógica central (CRUD, Routers, Core)
+│   ├── main.py           # Punto de entrada y Middleware CORS
+│   └── seed.py           # Script de carga de datos iniciales
+├── frontend/             # React + Vite + Tailwind CSS
+│   ├── src/api/          # Configuración de Axios (Cliente API)
+│   ├── src/hooks/        # Lógica de fetching (usePatients, etc.)
+│   ├── src/pages/        # Vistas principales de la aplicación
+│   └── tailwind.config.js # Personalización del sistema de diseño
+└── .github/workflows/    # Pipelines de CI/CD (Linter & Build)
+```
 ---
 
 ## 🚦 Instalación y Configuración
@@ -50,6 +68,12 @@ DATABASE_URL=postgresql://[usuario]:[password]@host:[port]/postgres
 Ejecuta el script de semilla para cargar los catálogos base:
 ```bash
 python seed.py
+```
+### 4. Configurar el Frontend
+```bash
+cd ../frontend
+npm install
+npm run dev
 ```
 
 ## 🔌 API Documentation (Highlights)
